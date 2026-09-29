@@ -1,2 +1,2 @@
 # dlorg_celonen
-Automate scripts to clean, organize, backup and restore download folder  
+Automate bash scripts to clean, organize, backup and restore deleted files in the Download folder  
