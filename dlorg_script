@@ -1,0 +1,10 @@
+
+
+#!/usr/bin/env bash
+
+name='dlorg_user'
+echo "Welcome $name"
+
+
+
+
