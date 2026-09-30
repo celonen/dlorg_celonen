@@ -1,0 +1,17 @@
+
+#!/usr/bin/env bash
+
+name='dlorg_user'
+echo "Welcome $name"
+
+#linux1_kokchun_giang/12_control_structures/loops/5_while_events
+
+#!/usr/bin/env bash
+
+echo "$PWD"
+
+inotifywait -m -e close_write -e moved_to --format "%f" "PWD" | 
+while read -r filename; do
+	echo "$filename"
+done  
+

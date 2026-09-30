@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "$PWD"
+
+inotifywait -m -e close_write -e moved_to --format "%f" "$PWD" |
+	while read -r filename; do
+		echo "$filename"
+	if [[ $filename == *.jpg ]]; then
+	echo "$filename will be moved to /home/oracle_linux10_user/Documents/github/dlorg_celonen/image/$filename"
+	mv $filename "/home/oracle_linux10_user/Documents/github/dlorg_celonen/image/$filename"
+	fi
+	done
