@@ -1,8 +1,8 @@
 # DLORG_GUIDELINES
-#How to create a bash script that monitors and organizes files automatically in the Download-directory
+How to create a bash script that monitors and organizes files automatically in the Download-directory
 
 ## Step 1: Create a bash script and name it <your_bash_script>.sh
-::> touch  <your_bash_script>.sh
+::> touch <your_bash_script>.sh
 
 ## Step 2: Add the following code in the newly created script after [code] to [/code] and save it:  
 
@@ -11,11 +11,11 @@
 ### Creates a hash array variable to store data
 declare -A DIRECTORY_TREE
 
-## Step 3: Define or edit the directory to monitor in DIRECTORY_ROOT
+## Step 3: Edit the directory to monitor in DIRECTORY_ROOT
 ### Defines the absolute path to the directory that's going to be monitored, automated and organized 
 DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/"
 
-## Step 4: define or edit the directory to move file to by defining DIRECTORY_TREE path to category type as Audio or Document and etc..
+## Step 4: Edit the directory that files should be moved to by defining DIRECTORY_TREE path to category type (Audio|Document|Image|Video|Other)
 ### Stores data inside the hash array by category values -> absolute paths to each directory  
 DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/audio/"
 DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/document/"
@@ -24,7 +24,7 @@ DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celone
 DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/IT/"
 DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/other/"
 
-## Step 5: Match file extention to defined search prefix like png|jpeg|gif for IMAGE category
+## Step 5: Match file extention to defined search prefix (png|jpeg|gif) for IMAGE category
 ### Builds variables that uses pattern matchning on file extention
 SEARCH_AUDIO_EXTENTION="mp3"
 SEARCH_DOCUMENT_EXTENTION="docx|docm|doc|txt|md|pdf|xls|ods"
@@ -35,7 +35,7 @@ SEARCH_SCRIPT_EXTENTION="sh|bat"
 ### Auto-generates item numbers/ID's for processed files
 ITEM_ID=0
 
-### Runs a program that monitors the $DIRECTORY_ROOT variable (download folder), by triggered events as close_write and moved_to
+### Runs a program that monitors the $DIRECTORY_ROOT variable (download folder) by triggered events (close_write and moved_to)
 inotifywait -m -e close_write -e moved_to --format "%f" "$DIRECTORY_ROOT" |
 while read -r filename; do
 	echo ""
@@ -90,7 +90,7 @@ done
 [/code]
 
 
-## Step 6: Enable permissions and make the bash script executable
+## Step 6: Open the terminal, enable permissions and make the bash script executable
 ::> chmod u+x <your_bash_script>.sh
 
 ## Step 7: Automate the bash script into a service, so it's always running in the background
