@@ -1,0 +1,105 @@
+
+#!/usr/bin/env bash
+
+AUDIO_FOLDER="/home/oracle_linux10_user/Documents/github/dlorg_celonen/audio"
+SEARCH_AUDIO_FILES="mp3|wav"
+DOCUMENT_FOLDER="/home/oracle_linux10_user/Documents/github/dlorg_celonen/document"
+SEARCH_DOCUMENT_FILES="docx|txt"
+IMAGE_FOLDER="/home/oracle_linux10_user/Documents/github/dlorg_celonen/image"
+OTHER_FOLDER="/home/oracle_linux10_user/Documents/github/dlorg_celonen/other"
+VIDEO_FOLDER="/home/oracle_linux10_user/Documents/github/dlorg_celonen/video"
+PWD_FOLDER=$(pwd)
+
+echo "$PWD"
+
+inotifywait -m -e close_write -e moved_to --format "%f" "$PWD" |
+while read -r filename; do
+	echo "New file: $filename"
+
+	if [[ -f "$filename" && "${filename,,}" =~ \.($SEARCH_AUDIO_FILES)$ ]]; then
+
+		echo "Checking if folder: $AUDIO_FOLDER exist"
+
+		if [ -d "$AUDIO_FOLDER" ]; then
+
+			echo "$AUDIO_FOLDER exist"
+
+			if [[ -f "$filename" && "${filename,,}" =~ \.($SEARCH_AUDIO_FILES)$ ]]; then
+
+				echo "$filename will be moved to $AUDIO_FOLDER/$filename"
+				mv $filename "$AUDIO_FOLDER/$filename"
+
+			fi
+		else
+
+			echo "$ADUIO_FOLDER is missing or don't exist"
+			echo "Creating missing folder: $AUDIO_FOLDER"
+
+			mkdir $AUDIO_FOLDER
+
+			if [ -d "$AUDIO_FOLDER" ]; then
+
+				if [[ -f "$filename" && "${filename,,}" =~ \.($SEARCH_AUDIO_FILES)$ ]]; then
+
+					echo "Moving $filename to $AUDIO_FOLDER"
+					mv $filename "$AUDIO_FOLDER/$filename"
+				fi
+			fi
+
+		fi
+	fi
+
+##### här staaaaaaart
+
+if [[ -f "$filename" && "${filename,,}" =~ \.($SEARCH_AUDIO_FILES)$ ]]; then
+
+                echo "Checking if folder: $AUDIO_FOLDER exist"
+
+                if [ -d "$AUDIO_FOLDER" ]; then
+
+                        echo "$AUDIO_FOLDER exist"
+
+                        if [[ -f "$filename" && "${filename,,}" =~ \.($SEARCH_AUDIO_FILES)$ ]]; then
+
+                                echo "$filename will be moved to $AUDIO_FOLDER/$filename"
+                                mv $filename "$AUDIO_FOLDER/$filename"
+fi
+                else
+
+                        echo "$ADUIO_FOLDER is missing or don't exist"
+                        echo "Creating missing folder: $AUDIO_FOLDER"
+
+                        mkdir $AUDIO_FOLDER
+
+                        if [ -d "$AUDIO_FOLDER" ]; then
+
+                                if [[ -f "$filename" && "${filename,,}" =~ \.($SEARCH_AUDIO_FILES)$ ]]; then
+
+				echo "$filename will be moved to $AUDIO_FOLDER/$filename"
+                                mv $filename "$AUDIO_FOLDER/$filename"
+fi
+                else
+
+                        echo "$ADUIO_FOLDER is missing or don't exist"
+                        echo "Creating missing folder: $AUDIO_FOLDER"
+
+                        mkdir $AUDIO_FOLDER
+
+                        if [ -d "$AUDIO_FOLDER" ]; then
+
+                                if [[ -f "$filename" && "${filename,,}" =~ \.($SEARCH_AUDIO_FILES)$ ]]; then
+
+                                        echo "Moving $filename to $AUDIO_FOLDER"
+                                        mv $filename "$AUDIO_FOLDER/$filename"
+                                fi
+                        fi
+
+                fi
+        fi
+
+
+### Hör slut
+
+
+done
+
