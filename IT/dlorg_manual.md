@@ -115,6 +115,8 @@ sudo nano /etc/systemd/system/test_script.sh.service
 ``` 
 
 ## Step 8: Insert the following code in the unit-file document, change ExecStart= to bash script path, and save
+
+```
 [Unit]
 Description=My First Script Service
 After=network.target
@@ -128,6 +130,7 @@ User=root
 
 [Install]
 WantedBy=multi-user.target
+```
 
 ![Unit-file](unitfile.PNG) 
 
