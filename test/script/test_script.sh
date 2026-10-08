@@ -3,11 +3,9 @@
 ### Creates a hash array variable to store data
 declare -A DIRECTORY_TREE
 
-## Step 3: Edit the directory to monitor in DIRECTORY_ROOT
 ### Defines the absolute path to the directory that's going to be monitored, automated and organized
 DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/"
 
-## Step 4: Edit the directory that files should be moved to by defining DIRECTORY_TREE path to category type (Audio|Document|Image|Video|Other)
 ### Stores data inside the hash array by category values -> absolute paths to each directory
 DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/audio/"
 DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/document/"
@@ -16,7 +14,6 @@ DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celone
 DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/script/"
 DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/other/"
 
-## Step 5: Match file extention to defined search prefix (png|jpeg|gif) for IMAGE category
 ### Builds variables that uses pattern matchning on file extention
 SEARCH_AUDIO_EXTENTION="mp3"
 SEARCH_DOCUMENT_EXTENTION="docx|docm|doc|txt|md|pdf|xls|ods"

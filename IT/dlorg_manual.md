@@ -18,11 +18,9 @@ nano <your_bash_script>.sh
 ### Creates a hash array variable to store data
 declare -A DIRECTORY_TREE
 
-## Step 3: Edit the directory to monitor in DIRECTORY_ROOT
 ### Defines the absolute path to the directory that's going to be monitored, automated and organized 
 DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/"
 
-## Step 4: Edit the directory that files should be moved to by defining DIRECTORY_TREE path to category type (Audio | Document | Image | Video | Other)
 ### Stores data inside the hash array by category values -> absolute paths to each directory  
 DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/audio/"
 DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/document/"
@@ -31,7 +29,6 @@ DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celone
 DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/script/"
 DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/other/"
 
-## Step 5: Match file extention to defined search prefix (png | jpeg | gif) for IMAGE category
 ### Builds variables that uses pattern matchning on file extention
 SEARCH_AUDIO_EXTENTION="mp3"
 SEARCH_DOCUMENT_EXTENTION="docx|docm|doc|txt|md|pdf|xls|ods"
@@ -97,9 +94,36 @@ done
 
 [/code]
 
-![Bash Script Page 1](test_script_p1.PNG) 
+## Step 3: Edit the directory to monitor in DIRECTORY_ROOT
 
-![Bash Script Page 2](test_script_p2.PNG) 
+```
+DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/"
+```
+
+## Step 4: Edit the directory that files should be moved to by defining DIRECTORY_TREE path to category type (Audio | Document | Image | Video | Other)
+
+```
+DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/audio/"
+DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/document/"
+DIRECTORY_TREE["Image"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/image/"
+DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/video/"
+DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/script/"
+DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/other/"
+```
+
+## Step 5: Match file extention to defined search prefix (png | jpeg | gif) for IMAGE category
+
+```
+SEARCH_AUDIO_EXTENTION="mp3"
+SEARCH_DOCUMENT_EXTENTION="docx|docm|doc|txt|md|pdf|xls|ods"
+SEARCH_IMAGE_EXTENTION="png|jpg|jpeg|gif"
+SEARCH_VIDEO_EXTENTION="mp4|mov"
+SEARCH_SCRIPT_EXTENTION="sh|bat"
+```
+
+ 
+
+ 
 
 ## Step 6: Open the terminal, enable permissions and make the bash script executable
 
@@ -112,7 +136,7 @@ In the terminal, run the following command and name the service <your_bash_scrip
 
 ``` 	
 sudo nano /etc/systemd/system/test_script.sh.service
-``` 
+```
 
 ## Step 8: Insert the following code in the unit-file document, change ExecStart= to bash script path, and save
 
@@ -132,7 +156,7 @@ User=root
 WantedBy=multi-user.target
 ```
 
-![Unit-file](unitfile.PNG) 
+ 
 
 ## Step 9: Open the terminal and run the following commands
 
@@ -147,4 +171,4 @@ sudo systemctl enable --now <your_bash_script>.service
 systemctl status <your_bash_script>.service 
 ```
 
-![Making the script into a service](chmod_unitfile_systemstatus.PNG) 
+ 
