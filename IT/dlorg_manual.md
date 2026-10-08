@@ -97,9 +97,9 @@ done
 
 [/code]
 
-![Bash Script Page 1](dlorg_celonen/test_script_p1.PNG) 
+![Bash Script Page 1](test_script_p1.PNG) 
 
-![Bash Script Page 2](dlorg_celonen/test_script_p2.PNG) 
+![Bash Script Page 2](test_script_p2.PNG) 
 
 ## Step 6: Open the terminal, enable permissions and make the bash script executable
 
@@ -129,7 +129,7 @@ User=root
 [Install]
 WantedBy=multi-user.target
 
-![Unit-file](dlorg_celonen/unitfile.PNG) 
+![Unit-file](unitfile.PNG) 
 
 ## Step 9: Open the terminal and run the following commands
 
@@ -144,4 +144,4 @@ sudo systemctl enable --now <your_bash_script>.service
 systemctl status <your_bash_script>.service 
 ```
 
-![Making the script into a service](dlorg_celonen/chmod_unitfile_systemstatus.PNG) 
+![Making the script into a service](chmod_unitfile_systemstatus.PNG) 
