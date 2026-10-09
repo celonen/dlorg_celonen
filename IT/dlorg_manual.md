@@ -123,11 +123,11 @@ SEARCH_SCRIPT_EXTENTION="sh|bat"
 
  
 
-![Bash Script Page 1](test_script_p1.PNG)
+![Bash Script Page 1](dlorg_script_p1.PNG)
 
  
 
-![Bash Script Page 2](test_script_p2.PNG)
+![Bash Script Page 2](dlorg_script_p2.PNG)
 
 ## Step 6: Open the terminal, enable permissions and make the bash script executable
 
@@ -162,7 +162,7 @@ WantedBy=multi-user.target
 
  
 
-![Unit-file](unitfile.PNG)
+![Unit-file](dlorg_unitfile.PNG)
 
 ## Step 9: Open the terminal and run the following commands
 
@@ -179,4 +179,4 @@ systemctl status <your_bash_script>.service
 
  
 
-![Make it into a service](chmod_unitfile_systemstatus.PNG)
+![Make it into a service](dlorg_systemstatus.PNG)

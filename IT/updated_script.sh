@@ -33,7 +33,7 @@ while read -r filename; do
 	### Creates the absolute path from the $DIRECTORY_ROOT and $filename variables into the $Fullpath variable
 	Fullpath=$DIRECTORY_ROOT${filename}
 
-	### Matching file extention with SEARCH-variable to distinguish file category value and define what folder each file should be moved to in DIRECTORY_TREE array
+	### Matches file extention with SEARCH-variable extention, if there's a match, the file gets assigned with a category value, defining what folder each file will be moved to
 	if [[ -f ${Fullpath} && ${Fullpath,,} =~ \.($SEARCH_AUDIO_EXTENTION)$ ]]; then
 		Category="Audio"
         elif [[ -f ${Fullpath} && ${Fullpath,,} =~ \.($SEARCH_DOCUMENT_EXTENTION)$ ]]; then
