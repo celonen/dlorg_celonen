@@ -19,15 +19,15 @@ nano <your_bash_script>.sh
 declare -A DIRECTORY_TREE
 
 ### Defines the absolute path to the directory that's going to be monitored, automated and organized 
-DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/"
+DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/"
 
 ### Stores data inside the hash array by category values -> absolute paths to each directory  
-DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/audio/"
-DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/document/"
-DIRECTORY_TREE["Image"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/image/"
-DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/video/"
-DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/script/"
-DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/other/"
+DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/audio/"
+DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/document/"
+DIRECTORY_TREE["Image"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/image/"
+DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/video/"
+DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/script/"
+DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/other/"
 
 ### Builds variables that uses pattern matchning on file extention
 SEARCH_AUDIO_EXTENTION="mp3"
@@ -97,18 +97,18 @@ done
 ## Step 3: Edit the directory to monitor in DIRECTORY_ROOT
 
 ```
-DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/"
+DIRECTORY_ROOT="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/"
 ```
 
 ## Step 4: Edit the directory that files should be moved to by defining DIRECTORY_TREE path to category type (Audio | Document | Image | Video | Other)
 
 ```
-DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/audio/"
-DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/document/"
-DIRECTORY_TREE["Image"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/image/"
-DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/video/"
-DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/script/"
-DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/test/other/"
+DIRECTORY_TREE["Audio"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/audio/"
+DIRECTORY_TREE["Document"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/document/"
+DIRECTORY_TREE["Image"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/image/"
+DIRECTORY_TREE["Video"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/video/"
+DIRECTORY_TREE["Scripts"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/script/"
+DIRECTORY_TREE["Other"]="/home/oracle_linux10_user/Documents/github/dlorg_celonen/download/other/"
 ```
 
 ## Step 5: Match file extention to defined search prefix (png | jpeg | gif) for IMAGE category
@@ -139,7 +139,7 @@ chmod u+x <your_bash_script>.sh
 In the terminal, run the following command and name the service <your_bash_script>.service 	
 
 ``` 	
-sudo nano /etc/systemd/system/test_script.sh.service
+sudo nano /etc/systemd/system/dlorg_script.sh.service
 ```
 
 ## Step 8: Insert the following code in the unit-file document, change ExecStart= to bash script path, and save
@@ -151,7 +151,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /home/oracle_linux10_user/Documents/github/dlorg_celonen/test/script/test_script.sh
+ExecStart=/bin/bash /home/oracle_linux10_user/Documents/github/dlorg_celonen/download/script/dlorg_script.sh
 Restart=on-failure
 RestartSec=5
 User=root

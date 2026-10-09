@@ -28,13 +28,13 @@ ITEM_ID=0
 inotifywait -m -e close_write -e moved_to --format "%f" "$DIRECTORY_ROOT" |
 while read -r filename; do
 	echo ""
-	### Creates a variable that adds an auto-generated id + a uniqe numbe
+	### Creates a variable that adds an auto-generated id + a uniqe number
         Id=$((ITEM_ID=ITEM_ID + 1))
 
 	### Creates the absolute path from the $DIRECTORY_ROOT and $filename variables into the $Fullpath variable
 	Fullpath=$DIRECTORY_ROOT${filename}
 
-	### Matching file extention with SEARCH-variable to distinguish file category value and define what folder each file should be moved to in DIRECTORY_TREE array
+	### Matches file extention with SEARCH-variable extention, if there's a match, the file gets assigned with a category value, defining what folder each file will be moved to
 	if [[ -f ${Fullpath} && ${Fullpath,,} =~ \.($SEARCH_AUDIO_EXTENTION)$ ]]; then
 		Category="Audio"
         elif [[ -f ${Fullpath} && ${Fullpath,,} =~ \.($SEARCH_DOCUMENT_EXTENTION)$ ]]; then
@@ -48,7 +48,7 @@ while read -r filename; do
 	else
                 Category="Other"
 	fi
-	### Checking category value to determine if appropriate folder already exists. If not, a new one will be created
+	### Checking category value to determine if an appropriate folder already exists. If not, a new one will be created
 	if [[ -d ${DIRECTORY_TREE["$Category"]} ]]; then
 
 		### User message
